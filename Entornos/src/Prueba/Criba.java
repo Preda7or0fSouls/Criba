@@ -7,36 +7,36 @@ public class Criba
     // Generar números primos de 1 a max
     public static int[] generarPrimos (int max)
     {
-        int i,j;
+        int x,j;
         if (max >= 2) {
 // Declaraciones
             int dim = max + 1; // Tamaño del array
             boolean[] esPrimo = new boolean[dim];
 // Inicializar el array
-            for (i=0; i<dim; i++)
-                esPrimo[i] = true;
+            for (x=0; x<dim; x++)
+                esPrimo[x] = true;
 // Eliminar el 0 y el 1, que no son primos
             esPrimo[0] = esPrimo[1] = false;
 // Criba
-            for (i=2; i<Math.sqrt(dim)+1; i++) {
-                if (esPrimo[i]) {
+            for (x=2; x<Math.sqrt(dim)+1; x++) {
+                if (esPrimo[x]) {
 // Eliminar los múltiplos de i
-                    for (j=2*i; j<dim; j+=i)
+                    for (j=2*x; j<dim; j+=x)
                         esPrimo[j] = false;
                 }
             }
 // ¿Cuántos primos hay?
             int cuenta = 0;
-            for (i=0; i<dim; i++) {
-                if (esPrimo[i])
+            for (x=0; x<dim; x++) {
+                if (esPrimo[x])
                     cuenta++;
             }
 // Rellenar el vector de números primos
             int[] primos = new int[cuenta];
            
-            for (i=0, j=0; i<dim; i++) {
-                if (esPrimo[i])
-                    primos[j++] = i;
+            for (x=0, j=0; x<dim; x++) {
+                if (esPrimo[x])
+                    primos[j++] = x;
             }
             return primos;
         } else { // max < 2
