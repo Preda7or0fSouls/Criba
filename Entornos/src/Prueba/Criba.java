@@ -1,37 +1,49 @@
 package Prueba;
 
 import java.util.Scanner;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class Criba.
+ */
 public class Criba
 {
-	
-    // Generar números primos de 1 a max
+
+/**
+ * Generar primos.
+ *
+ * @author Carlos Soler
+ * @param max the max
+ * @return the int[]
+ */
+  /** Generar numeros al hazar**/
     public static int[] generarPrimos (int max)
     {
         int x,j;
         if (max >= 2) {
-// Declaraciones
-            int dim = max + 1; // Tamaño del array
+
+            int dim = max + 1; 
             boolean[] esPrimo = new boolean[dim];
-// Inicializar el array
+/** Inicializar array**/
             for (x=0; x<dim; x++)
                 esPrimo[x] = true;
-// Eliminar el 0 y el 1, que no son primos
+/** Eliminar el 0 y el 1, que no son primos**/
             esPrimo[0] = esPrimo[1] = false;
-// Criba
+
             for (x=2; x<Math.sqrt(dim)+1; x++) {
                 if (esPrimo[x]) {
-// Eliminar los múltiplos de i
+/** Eliminar los m�ltiplos de i**/
                     for (j=2*x; j<dim; j+=x)
                         esPrimo[j] = false;
                 }
             }
-// ¿Cuántos primos hay?
+
             int cuenta = 0;
             for (x=0; x<dim; x++) {
                 if (esPrimo[x])
                     cuenta++;
             }
-// Rellenar el vector de números primos
+/** Rellenar el array de n�meros primos**/
             int[] primos = new int[cuenta];
            
             for (x=0, j=0; x<dim; x++) {
@@ -39,11 +51,17 @@ public class Criba
                     primos[j++] = x;
             }
             return primos;
-        } else { // max < 2
+        } else { 
             return new int[0];
-// Vector vacío
+/** array vac�o**/
         }
     }
+    
+    /**
+     * The main method.
+     *
+     * @param args the arguments
+     */
     public static void main(String[] args) {
         Scanner teclado=new Scanner(System.in);
         System.out.println("Introduce el número para la criba de Erastótenes:");
